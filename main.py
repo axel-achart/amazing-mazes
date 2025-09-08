@@ -2,7 +2,7 @@
 
 def display_menu():
     print("\nWelcome to Amazing Mazes, labyrinths of  Minotaur\n")
-    print("1. Backtracking Solver")
+    print("1. Recursive Backtracking Solver")
     print("2. AStar Solver")
     print("3. ASCII Solver")
     print("4. Kruskal Solver")

@@ -26,7 +26,7 @@ def generationlabyrinth():
         print("Invalid choice. Please choose 'dfs' or 'kruskal'.")
         return generationlabyrinth()
 
-    # ---- ALGO DFS BACKTRACKING ----
+    # ALGO DFS BACKTRACKING
     def generate_dfs(size):
         maze = [["#" for _ in range(size)] for _ in range(size)]
         dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
@@ -47,7 +47,7 @@ def generationlabyrinth():
         carve(1, 1)
         return maze
 
-    # ---- ALGO KRUSKAL ----
+    # ALGO KRUSKAL
     def generate_kruskal(size):
         maze = [["#" for _ in range(size)] for _ in range(size)]
 

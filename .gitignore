@@ -1,0 +1,26 @@
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environnements virtuels
+.env/
+.venv/
+env/
+venv/
+ENV/
+
+# Config éditeurs
+.vscode/
+.idea/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Sorties du projet
+labyrinth/*.txt
+*.log
+
+# Cache
+*.cache

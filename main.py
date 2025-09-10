@@ -1,12 +1,21 @@
 # Display Menu in Terminal
+from labyrinth.generate import generationlabyrinth
+from labyrinth.generate_file import generate_file
+
+
+def display_labyrinth():
+    print("\nWelcome to Amazing Mazes, labyrinths of  Minotaur\n")
+    labyrinth_content = generationlabyrinth()
+    generate_file(labyrinth_content)
+    return
+
 
 def display_menu():
-    print("\nWelcome to Amazing Mazes, labyrinths of  Minotaur\n")
-    print("1. Recursive Backtracking Solver")
+    print("\n1. Recursive Backtracking Solver")
     print("2. AStar Solver")
     print("3. ASCII Solver")
     print("4. Kruskal Solver")
-    choose = input("\nChoose a solver for the labyrinth : ")
+    choose = int(input("\nChoose a solver for the labyrinth : "))
 
 
     if choose not in (1, 2, 3, 4):
@@ -28,4 +37,5 @@ def display_menu():
 
 
 if __name__ == "__main__":
+    display_labyrinth()
     display_menu()

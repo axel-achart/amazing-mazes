@@ -1,12 +1,14 @@
 # Display Menu in Terminal
 from labyrinth.generate import generationlabyrinth
 from labyrinth.generate_file import generate_file
+from labyrinth.lab_to_jpg import txt_to_image
 
 
 def display_labyrinth():
     print("\nWelcome to Amazing Mazes, labyrinths of  Minotaur\n")
     labyrinth_content = generationlabyrinth()
-    generate_file(labyrinth_content)
+    txt_path = generate_file(labyrinth_content)
+    txt_to_image(txt_path, f"labyrinth/{labyrinth_content}.jpg")
     return
 
 

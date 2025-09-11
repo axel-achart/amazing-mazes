@@ -1,18 +1,19 @@
 # generate.py
 import random
+import time, tracemalloc
 
 def generationlabyrinth():
     size_input = input("Enter the size of the labyrinth (between 5 - 15) : ")
     try:
         size = int(size_input)
-        if not (5 <= size <= 15):
+        """if not (5 <= size <= 15):
             print("Please enter a valid number between 5 and 15.")
-            return generationlabyrinth()
+            return generationlabyrinth()"""
     except ValueError:
         print("Invalid input. Please enter a number.")
         return generationlabyrinth()
 
-    # Correction size to be odd
+    # Correction size to be odd (no pair)
     if size % 2 == 0:
         old = size
         size -= 1
@@ -28,6 +29,9 @@ def generationlabyrinth():
 
     # ALGO DFS BACKTRACKING
     def generate_dfs(size):
+        start = time.perf_counter()
+        tracemalloc.start()
+        tracemalloc.reset_peak()
         maze = [["#" for _ in range(size)] for _ in range(size)]
         dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
@@ -45,10 +49,18 @@ def generationlabyrinth():
                     carve(nx, ny)
 
         carve(1, 1)
+        end = time.perf_counter()
+        peak = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        print(f"Maze generated in {end - start:.4f} seconds.")
+        print(f"Current memory usage is {peak[0] / 10**6:.4f}MB; Peak was {peak[1] / 10**6:.4f}MB")
         return maze
 
     # ALGO KRUSKAL
     def generate_kruskal(size):
+        start = time.perf_counter()
+        tracemalloc.start()
+        tracemalloc.reset_peak()
         maze = [["#" for _ in range(size)] for _ in range(size)]
 
         # Create cells and sets
@@ -83,6 +95,11 @@ def generationlabyrinth():
                 maze[y2][x2] = "."
                 maze[wy][wx] = "."
 
+        end = time.perf_counter()
+        peak = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        print(f"Maze generated in {end - start:.4f} seconds.")
+        print(f"Current memory usage is {peak[0] / 10**6:.4f}MB; Peak was {peak[1] / 10**6:.4f}MB")
         return maze
 
     # Select and generate maze

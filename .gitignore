@@ -21,6 +21,10 @@ Thumbs.db
 # Sorties du projet
 labyrinth/*.txt
 labyrinth/*.jpg
+labyrinth/solutions_astar/*.jpg
+labyrinth/solutions_backtracking/*.jpg
+labyrinth/solutions_astar/*.txt
+labyrinth/solutions_backtracking/*.txt
 *.log
 
 # Cache

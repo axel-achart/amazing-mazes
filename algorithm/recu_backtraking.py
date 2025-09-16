@@ -1,5 +1,5 @@
 from typing import List, Tuple, Optional, Set
-import time
+import time, tracemalloc
 from labyrinth.lab_to_jpg import convert_solution_to_image
 
 def load_maze_from_file(filename: str) -> Optional[List[List[str]]]:
@@ -59,9 +59,9 @@ def recu_backtracking_solver(maze: List[List[str]], start: Tuple[int,int], end: 
     visited = set()
     start_time = time.time()
     if backtrack(start,path,visited,0):
-        print(f"Path found! Length: {len(path)}, Nodes explored: {nodes_explored}, Max depth: {max_depth}, Time: {time.time()-start_time:.3f}s")
+        print(f"Path found! Length: {len(path)}, Nodes explored: {nodes_explored}, Max depth: {max_depth}")
         return path, explored_cells
-    print(f"No path found. Nodes explored: {nodes_explored}, Time: {time.time()-start_time:.3f}s")
+    print(f"No path found. Nodes explored: {nodes_explored}")
     return None
 
 def visualize_solution(maze: List[List[str]], path: List[Tuple[int,int]], explored: Set[Tuple[int,int]]) -> str:
@@ -79,6 +79,12 @@ def solve_maze_backtracking(filename: str) -> bool:
     maze = load_maze_from_file(filename)
     if maze is None:
         return False
+    
+    
+    start_time = time.perf_counter()
+    tracemalloc.start()
+    tracemalloc.reset_peak()
+    
     start,end=find_start_and_end(maze)
     if start is None or end is None:
         print("Error: Maze entrance or exit not found.")
@@ -92,6 +98,13 @@ def solve_maze_backtracking(filename: str) -> bool:
             f.write(solution_visual)
         print(f"Solution saved in labyrinth/solutions_backtracking/{solution_filename}.txt")
         print(solution_visual)
+        
+        end_time = time.perf_counter()
+        peak = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        print(f"Solution found in {end_time - start_time:.4f} seconds.")
+        print(f"Current memory usage is {peak[0] / 10**6:.4f}MB; Peak was {peak[1] / 10**6:.4f}MB")
+        
         convert_solution_to_image(filename,"backtracking")
         return True
     else:

@@ -11,7 +11,7 @@ def display_labyrinth():
     labyrinth_content = generationlabyrinth()
     txt_path = generate_file(labyrinth_content)
 
-    display_img = input("\nDo you want to convert labyrinth ASCII into an image? (y/n): ").strip().lower()
+    display_img = input("\nDo you want to convert labyrinth generated ASCII into an image? (y/n): ").strip().lower()
     if display_img == 'y':
         output_file = txt_path.replace(".txt", ".jpg")  
         txt_to_image(txt_path, output_file)

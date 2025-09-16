@@ -2,6 +2,8 @@ import heapq
 from typing import List, Tuple, Optional, Set
 from labyrinth.lab_to_jpg import convert_solution_to_image
 
+import time, tracemalloc
+
 class Node:
     def __init__(self, position: Tuple[int, int], g_cost: float = 0, h_cost: float = 0, parent=None):
         self.position = position
@@ -99,6 +101,11 @@ def solve_maze_astar(filename: str) -> bool:
     maze = load_maze_from_file(filename)
     if maze is None:
         return False
+    
+    start_time = time.perf_counter()
+    tracemalloc.start()
+    tracemalloc.reset_peak()
+
     start, end = find_start_and_end(maze)
     if start is None or end is None:
         print("Error: Maze entrance or exit not found.")
@@ -112,6 +119,13 @@ def solve_maze_astar(filename: str) -> bool:
             f.write(solution_visual)
         print(f"Solution saved in labyrinth/solutions_astar/{solution_filename}.txt")
         print(solution_visual)
+        
+        end_time = time.perf_counter()
+        peak = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        print(f"Solution found in {end_time - start_time:.4f} seconds.")
+        print(f"Current memory usage is {peak[0] / 10**6:.4f}MB; Peak was {peak[1] / 10**6:.4f}MB")
+        
         convert_solution_to_image(filename, "astar")
         return True
     else:

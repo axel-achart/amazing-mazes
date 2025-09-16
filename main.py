@@ -8,9 +8,14 @@ def display_labyrinth():
     print("\nWelcome to Amazing Mazes, labyrinths of  Minotaur\n")
     labyrinth_content = generationlabyrinth()
     txt_path = generate_file(labyrinth_content)
-    output_file = txt_path.replace(".txt", ".jpg")  
-    txt_to_image(txt_path, output_file)
-    return
+
+    display_img = input("\nDo you want to convert labyrinth ascii into image ? (y/n) : ").strip().lower()
+    if display_img == 'y':
+        output_file = txt_path.replace(".txt", ".jpg")  
+        txt_to_image(txt_path, output_file)
+    else:
+        return
+
 
 
 def display_menu():

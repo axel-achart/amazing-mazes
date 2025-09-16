@@ -8,7 +8,8 @@ def display_labyrinth():
     print("\nWelcome to Amazing Mazes, labyrinths of  Minotaur\n")
     labyrinth_content = generationlabyrinth()
     txt_path = generate_file(labyrinth_content)
-    txt_to_image(txt_path, f"labyrinth/{labyrinth_content}.jpg")
+    output_file = txt_path.replace(".txt", ".jpg")  
+    txt_to_image(txt_path, output_file)
     return
 
 

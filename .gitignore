@@ -20,6 +20,7 @@ Thumbs.db
 
 # Sorties du projet
 labyrinth/*.txt
+labyrinth/*.jpg
 *.log
 
 # Cache

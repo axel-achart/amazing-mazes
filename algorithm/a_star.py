@@ -111,8 +111,8 @@ def solve_maze_astar(filename: str) -> bool:
         with open(f"labyrinth/solutions_astar/{solution_filename}.txt", 'w') as f:
             f.write(solution_visual)
         print(f"Solution saved in labyrinth/solutions_astar/{solution_filename}.txt")
-        convert_solution_to_image(filename, "astar")
         print(solution_visual)
+        convert_solution_to_image(filename, "astar")
         return True
     else:
         print("No path found.")

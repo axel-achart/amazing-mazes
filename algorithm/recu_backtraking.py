@@ -91,8 +91,8 @@ def solve_maze_backtracking(filename: str) -> bool:
         with open(f"labyrinth/solutions_backtracking/{solution_filename}.txt",'w') as f:
             f.write(solution_visual)
         print(f"Solution saved in labyrinth/solutions_backtracking/{solution_filename}.txt")
-        convert_solution_to_image(filename,"backtracking")
         print(solution_visual)
+        convert_solution_to_image(filename,"backtracking")
         return True
     else:
         return False

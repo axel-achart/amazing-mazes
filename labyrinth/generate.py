@@ -3,12 +3,12 @@ import random
 import time, tracemalloc
 
 def generationlabyrinth():
-    size_input = input("Enter the size of the labyrinth (between 5 - 15) : ")
+    size_input = input("Enter the size of the labyrinth (between 5 - 25) : ")
     try:
         size = int(size_input)
-        """if not (5 <= size <= 15):
-            print("Please enter a valid number between 5 and 15.")
-            return generationlabyrinth()"""
+        if not (5 <= size <= 25):
+            print("Please enter a valid number between 5 and 25.")
+            return generationlabyrinth()
     except ValueError:
         print("Invalid input. Please enter a number.")
         return generationlabyrinth()

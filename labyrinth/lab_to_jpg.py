@@ -2,7 +2,6 @@ from PIL import Image
 import os
 
 def txt_to_image(txt_file, output_file, cell_size=20):
-    """Convert a maze txt file to an image."""
     with open(txt_file, "r") as f:
         lines = [line.strip() for line in f]
     h, w = len(lines), len(lines[0])
@@ -12,17 +11,17 @@ def txt_to_image(txt_file, output_file, cell_size=20):
     for y, row in enumerate(lines):
         for x, char in enumerate(row):
             if char == "#":
-                color = (0, 0, 0)         # noir pour murs
+                color = (0, 0, 0)   
             elif char == "*":
-                color = (0, 0, 255)       # bleu pour chemins explorés / finaux
+                color = (0, 0, 255)   
             elif char == "O":
-                color = (255, 0, 0)       # rouge pour chemins abandonnés
+                color = (255, 0, 0)    
             elif char == "S":
-                color = (0, 255, 0)       # vert pour le départ
+                color = (0, 255, 0)   
             elif char == "E":
-                color = (255, 255, 0)     # jaune pour la fin
+                color = (255, 255, 0)   
             else:
-                color = (255, 255, 255)   # blanc pour le fond
+                color = (255, 255, 255)  
             for dy in range(cell_size):
                 for dx in range(cell_size):
                     pixels[x * cell_size + dx, y * cell_size + dy] = color
@@ -31,7 +30,6 @@ def txt_to_image(txt_file, output_file, cell_size=20):
     print(f"Image saved as {output_file}")
 
 def convert_solution_to_image(filename: str, algorithm: str):
-    """Convert a maze solution to JPG after solving."""
     algorithm = algorithm.lower()
     if algorithm == "astar":
         folder = "solutions_astar"

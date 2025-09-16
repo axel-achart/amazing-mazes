@@ -7,17 +7,16 @@ from labyrinth.lab_to_jpg import txt_to_image
 
 
 def display_labyrinth():
-    print("\nWelcome to Amazing Mazes, labyrinths of Minotaur\n")
+    print("\nWelcome to Amazing Mazes, labyrinths of the Minotaur\n")
     labyrinth_content = generationlabyrinth()
     txt_path = generate_file(labyrinth_content)
 
-    display_img = input("\nDo you want to convert labyrinth ascii into image ? (y/n) : ").strip().lower()
+    display_img = input("\nDo you want to convert labyrinth ASCII into an image? (y/n): ").strip().lower()
     if display_img == 'y':
         output_file = txt_path.replace(".txt", ".jpg")  
         txt_to_image(txt_path, output_file)
     else:
         return
-
 
 
 def display_menu():
@@ -60,7 +59,6 @@ def display_menu():
 
 
 def solve_existing_maze():
-    """Permet de résoudre un labyrinthe existant avec le choix de l'algorithme"""
     print("\n Loading existing maze...")
     filename = input("Enter the name of the maze file (without .txt): ")
     
@@ -68,7 +66,7 @@ def solve_existing_maze():
         print(" Invalid filename.")
         return False
     
-    # Asks what algorithm to use
+    # Ask which algorithm to use
     print("\n Choose solving algorithm:")
     print("1.  Recursive Backtracking")
     print("2.  A*")
@@ -86,31 +84,27 @@ def solve_existing_maze():
 
 
 def compare_algorithms(filename: str):
-    """Compare les deux algorithmes sur le même labyrinthe"""
-    print(f"\n === COMPARAISON DES ALGORITHMES === ")
-    print(f"Labyrinthe: {filename}.txt\n")
+    print(f"\n === COMPARISON OF ALGORITHMS === ")
+    print(f"Maze: {filename}.txt\n")
     
     print("=" * 70)
-    print(" RÉSOLUTION AVEC RECURSIVE BACKTRACKING:")
+    print(" SOLVING WITH RECURSIVE BACKTRACKING:")
     print("=" * 70)
     success_bt = solve_maze_backtracking(filename)
     
     print("\n" + "=" * 70)
-    print(" RÉSOLUTION AVEC A*:")
+    print(" SOLVING WITH A*:")
     print("=" * 70)
     success_astar = solve_maze_astar(filename)
     
     print("\n" + "=" * 70)
-    print(" RÉSUMÉ DE LA COMPARAISON:")
+    print(" SUMMARY OF COMPARISON:")
     print("=" * 70)
-    print(f"Recursive Backtracking: {' Réussi' if success_bt else ' Échec'}")
-    print(f"A*:                     {' Réussi' if success_astar else ' Échec'}")
-    print("\n A* trouve toujours le chemin optimal (le plus court)")
-    print(" Recursive Backtracking trouve un chemin valide mais pas forcément optimal")
+    print(f"Recursive Backtracking: {' Success' if success_bt else ' Failure'}")
+    print(f"A*:                     {' Success' if success_astar else ' Failure'}")
 
 
 def main():
-    """Fonction principale du programme"""
     print(" " * 25)
     print("    Welcome to AMAZING MAZES")
     print("    The Labyrinths of the Minotaur")
@@ -132,7 +126,7 @@ def main():
             continue
         
         if main_choice == 1:
-            # Générer un nouveau labyrinthe
+            # Generate a new maze
             filename = display_labyrinth()
             if filename:
                 solver_choice = display_menu()
@@ -160,11 +154,11 @@ def main():
                     break
         
         elif main_choice == 2:
-            # Résoudre un labyrinthe existant
+            # Solve an existing maze
             solve_existing_maze()
         
         elif main_choice == 3:
-            # Comparer les algorithmes
+            # Compare algorithms
             print("\n Loading maze for comparison...")
             filename = input("Enter the name of the maze file (without .txt): ")
             if filename.strip():
@@ -180,7 +174,7 @@ def main():
         else:
             print(" Invalid choice. Please select 1, 2, 3, or 4.")
         
-        # Asks if the user wants to continue
+        # Ask if the user wants to continue
         if main_choice in [1, 2, 3]:
             while True:
                 continue_choice = input("\nDo you want to continue? (y/n): ").lower().strip()
@@ -188,7 +182,6 @@ def main():
                     break
                 elif continue_choice in ['n', 'no']:
                     print("\n Thank you for using Amazing Mazes!")
-                    print("May you always find your way out of the labyrinth! 🗝️")
                     return
                 else:
                     print("Please enter 'y' for yes or 'n' for no.")

@@ -23,10 +23,10 @@ class Node:
 
 def load_maze_from_file(filename: str) -> Optional[List[List[str]]]:
     try:
-        with open(f"labyrinth/{filename}.txt", 'r') as file:
+        with open(f"labyrinth/generated_maze/{filename}.txt", 'r') as file:
             return [list(row) for row in file.read().strip().split('\n')]
     except FileNotFoundError:
-        print(f"Error: File 'labyrinth/{filename}.txt' does not exist.")
+        print(f"Error: File 'labyrinth/generated_maze/{filename}.txt' does not exist.")
         return None
 
 def find_start_and_end(maze: List[List[str]]) -> Tuple[Optional[Tuple[int, int]], Optional[Tuple[int, int]]]:

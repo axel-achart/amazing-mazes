@@ -25,6 +25,8 @@ labyrinth/solutions_astar/*.jpg
 labyrinth/solutions_backtracking/*.jpg
 labyrinth/solutions_astar/*.txt
 labyrinth/solutions_backtracking/*.txt
+labyrinth/generated_maze/*.txt
+labyrinth/generated_maze/*.jpg
 *.log
 
 # Cache

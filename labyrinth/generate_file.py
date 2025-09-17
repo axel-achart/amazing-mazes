@@ -1,10 +1,10 @@
 
 def generate_file(content):
     name_file = str(input("Enter the name of the file: "))
-    path = f"labyrinth/{name_file}.txt"
+    path = f"labyrinth/generated_maze/{name_file}.txt"
 
     with open(path, 'w') as file:
         file.write(content)
-    print(f"File '{path}' has been created inside labyrinth/ folder.")
+    print(f"File '{path}' has been created inside labyrinth/generated_maze/ folder.")
     
     return path

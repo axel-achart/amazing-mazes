@@ -114,7 +114,7 @@ def main():
         print("\n" + "="*60)
         print(" MAIN MENU")
         print("="*60)
-        print("1.  Generate and solve new maze")
+        print("1.  Generate new maze")
         print("2.  Solve existing maze")
         print("3.  Compare algorithms on existing maze")
         print("4.  Exit")

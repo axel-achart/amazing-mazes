@@ -1,60 +1,62 @@
-# 🌀 Amazing Mazes - Les Labyrinthes du Minotaure
+# 🌀 Amazing Mazes – Minotaur’s Labyrinths
 
-## 📖 Contexte
-Ce projet s’inspire de la légende du labyrinthe de Dédale et du Minotaure.  
-L’objectif est de concevoir un **générateur** et un **explorateur** de labyrinthes parfaits, c’est-à-dire avec un **unique chemin reliant deux points**.  
-Il combine **algorithmique**, **visualisation** et **résolution automatique**.
+## 📖 Project Overview
 
----
-
-## ⚙️ Fonctionnalités principales
-
-### Génération de labyrinthes
-
-| Algorithme          | Fonctionnalité              | Sortie                  |
-|---------------------|----------------------------|-------------------------|
-| DFS (Backtracking)  | Génération du labyrinthe   | ASCII ou image (JPG)    |
-| Kruskal             | Génération du labyrinthe   | ASCII ou image (JPG)    |
-
-- Les murs sont représentés par : `#`
-- Les espaces vides par : `.`
-- Conversion possible en image pour visualisation.
-
-### Exploration et résolution
-
-| Solveur               | Fonctionnalité                 | Visualisation                |
-|-----------------------|-------------------------------|------------------------------|
-| Recursive Backtracking| Parcours et résolution        | `o` (chemin), `*` (exploré)  |
-| A*                    | Parcours optimal              | `o` (chemin), `*` (exploré)  |
-
-### Visualisation
-
-- Labyrinthes ASCII convertis en images (PIL/Pillow)
-- Tests de performance jusqu’à des tailles de **4500**
-- Comparaison des temps des algorithmes
+Inspired by the legend of Daedalus and the Minotaur, this project demonstrates the design of a **maze generator** and **solver** that creates perfect mazes—structures with one unique path between any two points.  
+The project blends core algorithmic logic, data visualization, and automated solving, making it ideal for learners and technical enthusiasts interested in computational problem-solving.
 
 ---
 
-## 📊 Résultats observés
+## ⚙️ Key Features
 
-### Génération
+### Maze Generation
 
-| Algorithme | Caractéristique    | Remarque                                     |
-|------------|--------------------|----------------------------------------------|
-| Kruskal    | Mémoire plus haute | Génère de très grands labyrinthes            |
-| DFS        | Mémoire modérée    | Vitesse similaire, tailles toujours impaires |
+- Implements two advanced algorithms:
+  - **DFS (Backtracking):** Step-by-step path carving for random maze creation.
+  - **Kruskal:** Generates mazes by merging cells until the grid is fully connected.
+- Outputs:
+  - ASCII format: `#` for walls, `.` for open paths.
+  - Optional: Maze visualization as JPG images for enhanced clarity and presentations.
 
-### Résolution
+### Automated Solving & Exploration
 
-| Algorithme              | Rapidité     | Mémoire | Remarque                              |
-|-------------------------|-------------|---------|---------------------------------------|
-| A*                      | Plus rapide | Modérée | Peut résoudre des labyrinthes < 1000  |
-| Recursive Backtracking  | Plus lent   | Haute   | Moins efficace sur grands labyrinthes |
+- Includes two robust solvers:
+  - **Recursive Backtracking:** Explores every possible route to find a solution.
+  - **A\*** (A-Star): Finds the optimal path using heuristic-based search.
+- Visual indicators:
+  - `o` marks the discovered optimal path.
+  - `*` shows all explored cells.
+
+### Advanced Visualization & Benchmarking
+
+- Converts ASCII mazes into images (using **Pillow**)
+- Performance testing on mazes up to size **4500**
+- Side-by-side comparisons of generation and solving times for each algorithm
 
 ---
 
-## 🛠️ Technologies Utilisées
+## 📊 Observed Results
 
-- **Python**
-- **PIL / Pillow** (image processing)
-- **Algorithmes :** Backtracking, Kruskal, A*
+### Maze Generation
+
+| Algorithm | Memory Usage | Notes                                      |
+|-----------|--------------|--------------------------------------------|
+| Kruskal   | Higher       | Best for generating very large mazes       |
+| DFS       | Moderate     | Similar speed; always outputs odd sizes    |
+
+### Maze Solving
+
+| Solver                | Speed        | Memory  | Notes                                     |
+|-----------------------|-------------|---------|-------------------------------------------|
+| A*                    | Faster      | Moderate| Handles large mazes (up to size < 1000)   |
+| Recursive Backtracking| Slower      | Higher  | Less efficient for large mazes            |
+
+---
+
+## 🛠️ Technologies & Stack
+
+- **Python** (core logic and scripts)
+- **Pillow** (image processing and visualization)
+- **Algorithms**: Backtracking (DFS), Kruskal’s Algorithm, and A*
+
+---

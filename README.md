@@ -9,38 +9,52 @@ Il combine **algorithmique**, **visualisation** et **résolution automatique**.
 
 ## ⚙️ Fonctionnalités principales
 
-### 🔹 Génération de labyrinthes
-- Implémentation de **deux algorithmes de génération** :
-  - **DFS (Backtracking)**
-  - **Kruskal**
-- Production d’un fichier texte représentant :
-  - `#` = murs  
-  - `.` = espaces vides
-- Conversion possible en **image (JPG)** pour une meilleure visualisation.
+### Génération de labyrinthes
 
-### 🔹 Exploration et résolution
-- Implémentation de **deux solveurs automatiques** :
-  - **Recursive Backtracking**
-  - **A\***
-- Visualisation de la solution :
-  - `o` = chemin optimal trouvé
-  - `*` = cases explorées
+| Algorithme          | Fonctionnalité              | Sortie                  |
+|---------------------|----------------------------|-------------------------|
+| DFS (Backtracking)  | Génération du labyrinthe   | ASCII ou image (JPG)    |
+| Kruskal             | Génération du labyrinthe   | ASCII ou image (JPG)    |
 
-### 🔹 Visualisation avancée
-- Conversion des labyrinthes ASCII en images (via **PIL / Pillow**).
-- Tests de performances sur des tailles croissantes (jusqu’à **4500**).
-- Comparaison des temps de génération et de résolution entre les algorithmes.
+- Les murs sont représentés par : `#`
+- Les espaces vides par : `.`
+- Conversion possible en image pour visualisation.
+
+### Exploration et résolution
+
+| Solveur               | Fonctionnalité                 | Visualisation                |
+|-----------------------|-------------------------------|------------------------------|
+| Recursive Backtracking| Parcours et résolution        | `o` (chemin), `*` (exploré)  |
+| A*                    | Parcours optimal              | `o` (chemin), `*` (exploré)  |
+
+### Visualisation
+
+- Labyrinthes ASCII convertis en images (PIL/Pillow)
+- Tests de performance jusqu’à des tailles de **4500**
+- Comparaison des temps des algorithmes
 
 ---
 
 ## 📊 Résultats observés
 
 ### Génération
-- Les tailles de labyrinthe sont toujours ajustées en **impair** pour garantir une meilleure qualité.  
-- **Kruskal** a un pic de mémoire plus élevé mais génère des labyrinthes de très grande taille.  
-- **DFS (Backtracking)** et **Kruskal** prennent un temps globalement similaire.
 
-### Exploration
-- **A\*** résout les labyrinthes **plus rapidement** que le Backtracking récursif.  
-- Le **Recursive Backtracking** consomme souvent plus de mémoire et prend plus de temps.  
-- **A\*** parvient à résoudre des labyrinthes de taille plus importante (**< 1000**).
+| Algorithme | Caractéristique    | Remarque                                     |
+|------------|--------------------|----------------------------------------------|
+| Kruskal    | Mémoire plus haute | Génère de très grands labyrinthes            |
+| DFS        | Mémoire modérée    | Vitesse similaire, tailles toujours impaires |
+
+### Résolution
+
+| Algorithme              | Rapidité     | Mémoire | Remarque                              |
+|-------------------------|-------------|---------|---------------------------------------|
+| A*                      | Plus rapide | Modérée | Peut résoudre des labyrinthes < 1000  |
+| Recursive Backtracking  | Plus lent   | Haute   | Moins efficace sur grands labyrinthes |
+
+---
+
+## 🛠️ Technologies Utilisées
+
+- **Python**
+- **PIL / Pillow** (image processing)
+- **Algorithmes :** Backtracking, Kruskal, A*
